@@ -22,6 +22,8 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -44,6 +46,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -115,6 +121,12 @@ fun Navigation(mainActivity: MainActivity) {
         composable("Spedizioni") {
             Spedizioni(navController, mainActivity)
         }
+        composable("SpedizioniInCorso") {
+            SpedizioniInCorso(navController, mainActivity)
+        }
+        composable("StoricoSpedizioni") {
+            StoricoSpedizioni(navController, mainActivity)
+        }
     }
 }
 
@@ -146,37 +158,26 @@ fun Home(
     mainActivity: MainActivity
 ){
     Scaffold(
-        topBar = {
-            TopAppBar(
-                colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                ),
-                title = {
-                    Text("ZARA LCKR")
-                }
-            )
-        },
         bottomBar = {
             BottomAppBar(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.primary,
             ) {
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
-                    selected = false,
+                    icon = {},
+                    label = { Text("HOME", style = TextStyle(textDecoration = TextDecoration.Underline), fontSize = 18.sp) },
+                    selected = true,
                     onClick = { navController.navigate("Home") }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.ShoppingCart, contentDescription = "Spedizioni") },
-                    label = { Text("Spedizioni") },
+                    icon = {  },
+                    label = { Text("SPEDIZIONI", fontSize = 18.sp) },
                     selected = false,
                     onClick = { navController.navigate("Spedizioni") }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.AccountCircle, contentDescription = "Account") },
-                    label = { Text("Account") },
+                    icon = {},
+                    label = { Text("ACCOUNT", fontSize = 18.sp) },
                     selected = false,
                     onClick = { navController.navigate("Account") }
                 )
@@ -189,7 +190,8 @@ fun Home(
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-
+                Text("ZARA" , fontWeight = FontWeight.Bold,fontSize = 100.sp )
+                Text("LCKR", fontWeight = FontWeight.Bold,fontSize = 100.sp )
         }
     }
 
@@ -225,21 +227,21 @@ fun Account(
                 contentColor = MaterialTheme.colorScheme.primary,
             ) {
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
+                    icon = {},
+                    label = { Text("HOME", fontSize = 18.sp) },
                     selected = false,
                     onClick = { navController.navigate("Home") }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.ShoppingCart, contentDescription = "Spedizioni") },
-                    label = { Text("Spedizioni") },
+                    icon = {},
+                    label = { Text("SPEDIZIONI", fontSize = 18.sp) },
                     selected = false,
                     onClick = { navController.navigate("Spedizioni") }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.AccountCircle, contentDescription = "Account") },
-                    label = { Text("Account") },
-                    selected = false,
+                    icon = {},
+                    label = { Text("ACCOUNT", style = TextStyle(textDecoration = TextDecoration.Underline), fontSize = 18.sp)},
+                    selected = true,
                     onClick = { navController.navigate("Account") }
                 )
             }
@@ -276,21 +278,25 @@ fun Spedizioni(
 
                 },
                 actions = {
-                    Button(onClick = {navController.navigate("Home") }) {
+                    Button(   colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("NuoveSpedizioni") }) {
                         Text(
-                           text="Nuova spedizione"
+                           text="NUOVA SPEDIZIONE" ,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
                         )
 
                     }
-                   Button(onClick = {navController.navigate("Home") }) {
+                   Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("SpedizioniInCorso") }) {
                         Text(
-                            text="In corso"
+                            text="IN CORSO",
+                            color = Color.Black
                         )
 
                     }
-                    Button(onClick = {navController.navigate("Home") }) {
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("StoricoSpedizioni") }) {
                         Text(
-                            text="Storico consegne"
+                            text="STORICO CONSEGNE",
+                            color = Color.Black
                         )
 
                     }
@@ -303,21 +309,24 @@ fun Spedizioni(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.primary,
             ) {
+
+
+
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
+                    icon = {},
+                    label = { Text("HOME", fontSize = 18.sp) },
                     selected = false,
                     onClick = { navController.navigate("Home") }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.ShoppingCart, contentDescription = "Spedizioni") },
-                    label = { Text("Spedizioni") },
-                    selected = false,
+                    icon = {},
+                    label = { Text("SPEDIZIONI", style = TextStyle(textDecoration = TextDecoration.Underline), fontSize = 18.sp)},
+                    selected = true,
                     onClick = { navController.navigate("Spedizioni") }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.AccountCircle, contentDescription = "Account") },
-                    label = { Text("Account") },
+                    icon = {},
+                    label = { Text("ACCOUNT", fontSize = 18.sp) },
                     selected = false,
                     onClick = { navController.navigate("Account") }
                 )
@@ -337,10 +346,175 @@ fun Spedizioni(
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+
+fun SpedizioniInCorso(
+    navController: NavController,
+
+    mainActivity: MainActivity
+){
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    //titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
+                title = {
+
+                },
+                actions = {
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("Spedizioni") }) {
+                        Text(
+                            text="NUOVA SPEDIZIONE",
+                            color = Color.Black
+                        )
+
+                    }
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("SpedizioniInCorso") }) {
+                        Text(
+                            text="IN CORSO",
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+
+                    }
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("StoricoSpedizioni") }) {
+                        Text(
+                            text="STORICO CONSEGNE",
+                            color = Color.Black
+                        )
+
+                    }
+                }
+
+            )
+        },
+        bottomBar = {
+            BottomAppBar(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.primary,
+            ) {
+                NavigationBarItem(
+                    icon = {},
+                    label = { Text("HOME", fontSize = 18.sp) },
+                    selected = false,
+                    onClick = { navController.navigate("Home") }
+                )
+                NavigationBarItem(
+                    icon = {},
+                    label = { Text("SPEDIZIONI", fontSize = 18.sp, style = TextStyle(textDecoration = TextDecoration.Underline)) },
+                    selected = true,
+                    onClick = { navController.navigate("Spedizioni") }
+                )
+                NavigationBarItem(
+                    icon = {},
+                    label = { Text("ACCOUNT", fontSize = 18.sp) },
+                    selected = false,
+                    onClick = { navController.navigate("Account") }
+                )
+            }
+        },
+
+        ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+
+        }
+    }
+
+}
 
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 
+fun StoricoSpedizioni(
+    navController: NavController,
 
+    mainActivity: MainActivity
+){
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    //titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
+                title = {
+
+                },
+                actions = {
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("Spedizioni") }) {
+                        Text(
+                            text="NUOVA SPEDIZIONE",
+                            color = Color.Black
+                        )
+
+                    }
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("SpedizioniInCorso") }) {
+                        Text(
+                            text="IN CORSO",
+                            color = Color.Black
+                        )
+
+                    }
+                    Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("StoricoSpedizioni") }) {
+                        Text(
+                            text="STORICO CONSEGNE",
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+
+                        )
+
+                    }
+                }
+
+            )
+        },
+        bottomBar = {
+            BottomAppBar(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.primary,
+            ) {
+                NavigationBarItem(
+                    icon = {},
+                    label = { Text("HOME", fontSize = 18.sp) },
+                    selected = false,
+                    onClick = { navController.navigate("Home") }
+                )
+                NavigationBarItem(
+                    icon = { },
+                    label = { Text("SPEDIZIONI", fontSize = 18.sp,style = TextStyle(textDecoration = TextDecoration.Underline) )},
+                    selected = true,
+                    onClick = { navController.navigate("Spedizioni") }
+                )
+                NavigationBarItem(
+                    icon = {},
+                    label = { Text("ACCOUNT", fontSize = 18.sp) },
+                    selected = false,
+                    onClick = { navController.navigate("Account") }
+                )
+            }
+        },
+
+        ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+
+        }
+    }
+
+}
 
 
 
