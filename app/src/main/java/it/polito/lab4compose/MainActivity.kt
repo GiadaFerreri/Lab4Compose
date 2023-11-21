@@ -113,6 +113,7 @@ fun AuthenticationScreen(auth: FirebaseAuth) {
     LaunchedEffect(true) {
         // Attempt anonymous sign-in when the screen is launched
         isSignedIn = signInAnonymously(auth)
+        val name=""
 
     }
 
