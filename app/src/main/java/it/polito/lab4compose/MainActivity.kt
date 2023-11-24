@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -26,6 +28,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -141,10 +144,13 @@ fun LogIn(
     mainActivity: MainActivity
 ){
     Column(
-        modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)) {
+        modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
        Button(onClick = { navController.navigate("Home") }) {
-            Text("Conferma")
+            Text("Log in")
         }
 
 
@@ -159,15 +165,18 @@ fun Home(
     mainActivity: MainActivity
 ){
     Scaffold(
+
         bottomBar = {
+
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
-            ) {
+                containerColor = Color.White,
+            )
+            {
+
                 NavigationBarItem(
                     icon = {},
                     label = { Text("HOME", style = TextStyle(textDecoration = TextDecoration.Underline), fontSize = 18.sp) },
-                    selected = true,
+                    selected = false,
                     onClick = { navController.navigate("Home") }
                 )
                 NavigationBarItem(
@@ -182,7 +191,9 @@ fun Home(
                     selected = false,
                     onClick = { navController.navigate("Account") }
                 )
+
             }
+            Divider(color = Color.Black, thickness = 1.dp)
         },
 
     ) { innerPadding ->
@@ -213,8 +224,7 @@ fun Account(
     Scaffold(
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color.White
             ) {
                 NavigationBarItem(
                     icon = {},
@@ -231,10 +241,11 @@ fun Account(
                 NavigationBarItem(
                     icon = {},
                     label = { Text("ACCOUNT", style = TextStyle(textDecoration = TextDecoration.Underline), fontSize = 18.sp)},
-                    selected = true,
+                    selected = false,
                     onClick = { navController.navigate("Account") }
                 )
             }
+            Divider(color = Color.Black, thickness = 1.dp)
         },
 
         ) { innerPadding ->
@@ -244,6 +255,7 @@ fun Account(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text("GIOVANNA ROSSI" , fontWeight = FontWeight.Bold,fontSize = 30.sp )
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -251,15 +263,23 @@ fun Account(
                     .padding(8.dp)
             ){
                 Text("EMAIL" ,fontSize = 15.sp )
+                Text("\ngiovannarossi@gmail.com" ,fontSize = 12.sp, color = Color.LightGray )
+
             }
+            Divider(color = Color.LightGray, thickness = 1.dp)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
                     .padding(8.dp)
             ){
-                Text("TELEFONO" ,fontSize = 15.sp )
+
+                    Text("TELEFONO", fontSize = 15.sp)
+
+                    Text("\n+39 3452687996", fontSize = 12.sp, color = Color.LightGray)
+
             }
+            Divider(color = Color.LightGray, thickness = 1.dp)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -267,8 +287,10 @@ fun Account(
                     .padding(8.dp)
             ){
                 Text("PASSWORD" ,fontSize = 15.sp )
-            }
+                Text("\n*********" ,fontSize = 12.sp, color = Color.LightGray )
 
+            }
+            Divider(color = Color.LightGray, thickness = 1.dp)
 
 
 
@@ -287,11 +309,12 @@ fun Spedizioni(
 
     Scaffold(
         topBar = {
+
             TopAppBar(
                 colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    //titleContentColor = MaterialTheme.colorScheme.primary,
-                ),
+                    containerColor = Color.White
+                )
+                ,
                 title = {
 
                 },
@@ -321,11 +344,14 @@ fun Spedizioni(
                 }
 
             )
-        },
+
+
+        }
+
+        ,
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color.White
             ) {
 
 
@@ -339,7 +365,7 @@ fun Spedizioni(
                 NavigationBarItem(
                     icon = {},
                     label = { Text("SPEDIZIONI", style = TextStyle(textDecoration = TextDecoration.Underline), fontSize = 18.sp)},
-                    selected = true,
+                    selected = false,
                     onClick = { navController.navigate("Spedizioni") }
                 )
                 NavigationBarItem(
@@ -349,6 +375,8 @@ fun Spedizioni(
                     onClick = { navController.navigate("Account") }
                 )
             }
+            Divider(color = Color.Black, thickness = 1.dp)
+
         },
 
         ) { innerPadding ->
@@ -357,7 +385,7 @@ fun Spedizioni(
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-
+            Divider(color = Color.Black, thickness = 1.dp)
         }
     }
 
@@ -377,8 +405,7 @@ fun SpedizioniInCorso(
         topBar = {
             TopAppBar(
                 colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    //titleContentColor = MaterialTheme.colorScheme.primary,
+                    containerColor = Color.White
                 ),
                 title = {
 
@@ -412,8 +439,7 @@ fun SpedizioniInCorso(
         },
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color.White
             ) {
                 NavigationBarItem(
                     icon = {},
@@ -424,7 +450,7 @@ fun SpedizioniInCorso(
                 NavigationBarItem(
                     icon = {},
                     label = { Text("SPEDIZIONI", fontSize = 18.sp, style = TextStyle(textDecoration = TextDecoration.Underline)) },
-                    selected = true,
+                    selected = false,
                     onClick = { navController.navigate("Spedizioni") }
                 )
                 NavigationBarItem(
@@ -434,6 +460,7 @@ fun SpedizioniInCorso(
                     onClick = { navController.navigate("Account") }
                 )
             }
+            Divider(color = Color.Black, thickness = 1.dp)
         },
 
         ) { innerPadding ->
@@ -442,7 +469,7 @@ fun SpedizioniInCorso(
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-
+            Divider(color = Color.Black, thickness = 1.dp)
         }
     }
 
@@ -462,7 +489,7 @@ fun StoricoSpedizioni(
         topBar = {
             TopAppBar(
                 colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    containerColor = Color.White,
                     //titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
@@ -498,8 +525,8 @@ fun StoricoSpedizioni(
         },
         bottomBar = {
             BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = Color.White,
+                //contentColor = MaterialTheme.colorScheme.primary,
             ) {
                 NavigationBarItem(
                     icon = {},
@@ -510,7 +537,7 @@ fun StoricoSpedizioni(
                 NavigationBarItem(
                     icon = { },
                     label = { Text("SPEDIZIONI", fontSize = 18.sp,style = TextStyle(textDecoration = TextDecoration.Underline) )},
-                    selected = true,
+                    selected = false,
                     onClick = { navController.navigate("Spedizioni") }
                 )
                 NavigationBarItem(
@@ -520,6 +547,7 @@ fun StoricoSpedizioni(
                     onClick = { navController.navigate("Account") }
                 )
             }
+            Divider(color = Color.Black, thickness = 1.dp)
         },
 
         ) { innerPadding ->
@@ -528,7 +556,7 @@ fun StoricoSpedizioni(
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-
+            Divider(color = Color.Black, thickness = 1.dp)
         }
     }
 
