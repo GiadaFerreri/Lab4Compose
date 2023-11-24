@@ -321,7 +321,7 @@ fun Spedizioni(
                 actions = {
                     Button(   colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("NuoveSpedizioni") }) {
                         Text(
-                           text="NUOVA SPEDIZIONE" ,
+                           text="NUOVA \nSPEDIZIONE" ,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
                         )
@@ -336,7 +336,7 @@ fun Spedizioni(
                     }
                     Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("StoricoSpedizioni") }) {
                         Text(
-                            text="STORICO CONSEGNE",
+                            text="STORICO \nCONSEGNE",
                             color = Color.Black
                         )
 
@@ -413,7 +413,7 @@ fun SpedizioniInCorso(
                 actions = {
                     Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("Spedizioni") }) {
                         Text(
-                            text="NUOVA SPEDIZIONE",
+                            text="NUOVA \nSPEDIZIONE",
                             color = Color.Black
                         )
 
@@ -428,7 +428,7 @@ fun SpedizioniInCorso(
                     }
                     Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("StoricoSpedizioni") }) {
                         Text(
-                            text="STORICO CONSEGNE",
+                            text="STORICO \nCONSEGNE",
                             color = Color.Black
                         )
 
@@ -498,7 +498,7 @@ fun StoricoSpedizioni(
                 actions = {
                     Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("Spedizioni") }) {
                         Text(
-                            text="NUOVA SPEDIZIONE",
+                            text="NUOVA \nSPEDIZIONE",
                             color = Color.Black
                         )
 
@@ -512,7 +512,7 @@ fun StoricoSpedizioni(
                     }
                     Button(colors = ButtonDefaults.buttonColors(Color.Transparent), onClick = {navController.navigate("StoricoSpedizioni") }) {
                         Text(
-                            text="STORICO CONSEGNE",
+                            text="STORICO \nCONSEGNE",
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
 
